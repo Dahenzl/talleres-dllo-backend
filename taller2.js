@@ -25,13 +25,12 @@ const findMin = (numeros) => {
 // Punto 2
 
 const includes = (numeros, numero) => {
-    let encontrado = false
-    numeros.forEach(num => {
+    for (const num of numeros) {
         if (num === numero) {
-            encontrado = true
+            return true;
         }
-    })
-    return encontrado
+    }
+    return false;
 }
 
 // Punto 3
