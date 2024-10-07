@@ -3,7 +3,7 @@ import cors from "cors";
 import express from "express";
 
 // API ROUTES IMPORTS
-import userRoutes from "./user/v1/user.routes";
+import userRoutes from "./user/user.routes";
 
 // MIDDLEWARES
 const app = express();

@@ -1,5 +1,3 @@
-import { model, Schema } from "mongoose";
-
 // DECLARE MODEL TYPE
 type UserType = {
     id: number;
@@ -10,20 +8,6 @@ type UserType = {
     faction?: string;
     carrera?: string;
 };
-
-// DECLARE MONGOOSE SCHEMA
-const UserSchema = new Schema<UserType>({
-    id: { type: Number, required: true, unique: true },
-    name: { type: String, required: true },
-    hobbies: { type: [String] },
-    years: { type: Number },
-    team: { type: String },
-    faction: { type: String },
-    carrera: { type: String },
-});
-
-// DECLARE MONGO MODEL
-const UserModel = model<UserType>("User", UserSchema);
 
 // Mock Data 
 const users: UserType[] = [
@@ -126,4 +110,4 @@ const users: UserType[] = [
 ]
   
 // EXPORT ALL
-export { UserModel, UserSchema, UserType, users };
+export { UserType, users };

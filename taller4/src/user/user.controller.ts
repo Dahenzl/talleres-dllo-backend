@@ -30,11 +30,18 @@ async function findUsersByFaction(faction: String): Promise<UserType[]> {
 }
 
 async function registerUser(user: UserType): Promise<UserType> {
+  // VALIDATING USER (As there is no database but an array, we need to check this manually in the controller) 
+  // Not necessary for the quiz, but i wanted to do it as a good practice :)
   const users = await readUserAction();
+  user.id = Number(user.id);
+  if (isNaN(user.id)) {
+    throw new Error("User ID must be a number");
+  }
   const exists = users.some((u: UserType) => u.id === user.id);
   if (exists) {
-    throw new Error("User id already exists");
+    throw new Error("User ID already exists");
   }
+  // CREATING USER
   return createUserAction(user);
 }
 
