@@ -3,7 +3,7 @@ import { UpdateBookType } from "./book.types";
 
 // DECLARE ACTION FUNCTION
 async function updateBookAction(bookData: UpdateBookType): Promise<BookType | null> {
-    const updatedBook = await BookModel.findOneAndUpdate({ _id: bookData._id }, bookData, { new: true });
+    const updatedBook = await BookModel.findOneAndUpdate({ _id: bookData._id, active: true }, bookData, { new: true });
 
     return updatedBook;
 }
