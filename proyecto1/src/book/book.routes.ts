@@ -80,6 +80,15 @@ async function UpdateBook(request: Request<UpdateBookType>, response: Response) 
     try {
         const book = await updateBook(request.body);
 
+        if(!book) {
+            response.status(404).json({
+                message: "Failure",
+                information: "Book not found."
+            });
+
+            return;
+        }
+
         response.status(200).json({
             message: "Success.",
             book: book,

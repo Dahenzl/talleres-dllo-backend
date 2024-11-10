@@ -82,6 +82,15 @@ async function UpdateUser(request: Request<UpdateUserType>, response: Response) 
   try {
     const user = await updateUser(request.body);
 
+    if(!user) {
+      response.status(404).json({
+        message: "Failure",
+        information: "User not found."
+      });
+
+      return;
+    }
+
     response.status(200).json({
       message: "Success.",
       user: user,

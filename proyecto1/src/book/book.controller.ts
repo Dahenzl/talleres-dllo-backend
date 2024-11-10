@@ -83,7 +83,9 @@ async function updateBook(bookData: UpdateBookType): Promise<BookType | null> {
             delete bookData.authUser;
 
             const updatedBook = await updateBookAction(bookData);
-            await updateUserAction(userPush);
+            if(updatedBook){
+                await updateUserAction(userPush);
+            }
 
             return updatedBook;
         } else {
